@@ -17,8 +17,10 @@ const gameboard = (function () {
         return false;
     }
     const handleCellClick = gameContainer.addEventListener("click", (event) => {
-        const cellIndex = +event.target.getAttribute("index");
-        gameflow.playRound(cellIndex);
+        if(event.target.classList[0] === "cell") {
+            const cellIndex = +event.target.getAttribute("index");
+            gameflow.playRound(cellIndex);
+        }
     });
     const resetBoard = () => {
         board = board.map(() => "");
